@@ -1,35 +1,33 @@
 import React from 'react';
-import {
-  useDispatch,
-  useSelector,
-} from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import {
   IconButton,
   Tooltip,
 } from '@mui/material';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { ThemeActionTypes } from '../../theme';
+import {
+  Brightness4 as Brightness4Icon,
+  Brightness7 as Brightness7Icon,
+} from '@mui/icons-material';
+import {
+  ThemeModes,
+  useThemeMode,
+} from '../../theme';
 
-const {
-  SET_LIGHT_THEME_MODE,
-  RESET_THEME_MODE,
-} = ThemeActionTypes;
+const { DARK } = ThemeModes;
 
 const ThemeSwitcher = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const { toggleThemeMode } = useThemeMode();
   const themeMode = useSelector((state) => state?.ThemeMode?.themeMode);
-  const getThemeModeIcon = () => (themeMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />);
-  const handleToggleTheme = () => dispatch({ type: themeMode === 'dark' ? SET_LIGHT_THEME_MODE : RESET_THEME_MODE });
+  const getThemeModeIcon = () => (themeMode === DARK ? <Brightness7Icon /> : <Brightness4Icon />);
 
   return (
     <Tooltip title={t('Toggle light/dark theme')}>
       <IconButton
         aria-label={t('Toggle light/dark theme')}
         color="inherit"
-        onClick={handleToggleTheme}
+        onClick={toggleThemeMode}
       >
         {getThemeModeIcon()}
       </IconButton>

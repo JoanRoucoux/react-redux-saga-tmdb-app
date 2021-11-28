@@ -1,20 +1,22 @@
 import { Matcher } from '../../../../core';
+import ThemeModes from '../constants/ThemeModes';
 import ThemeActionTypes from './ThemeActionTypes';
 
-const LIGHT_THEME_MODE = 'light';
-const DARK_THEME_MODE = 'dark';
+const {
+  DARK,
+  LIGHT,
+} = ThemeModes;
 
-// reducer initial state
 const initialState = {
-  themeMode: DARK_THEME_MODE,
+  themeMode: LIGHT,
 };
 
 const ThemeModeReducer = (state = initialState, action) => Matcher()
   .on(
-    () => action.type === ThemeActionTypes.SET_LIGHT_THEME_MODE,
+    () => action.type === ThemeActionTypes.SET_DARK_THEME_MODE,
     () => ({
       ...state,
-      themeMode: LIGHT_THEME_MODE,
+      themeMode: DARK,
     }),
   )
   .on(

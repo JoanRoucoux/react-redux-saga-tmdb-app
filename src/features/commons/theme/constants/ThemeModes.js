@@ -1,10 +1,6 @@
-const THEME_MODES = {
+const ThemeModes = {
   DARK: 'dark',
   LIGHT: 'light',
-};
-
-const ThemeModes = {
-  THEME_MODES,
 };
 
 export default ThemeModes;
