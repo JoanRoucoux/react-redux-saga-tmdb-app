@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { MovieActionTypes } from '../redux';
 import MovieServicesConstants from './MovieServicesConstants';
@@ -34,7 +33,7 @@ export default function* getMovieUpcoming(action) {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[MovieUpcomingService] Service call '
+      console.log('[MovieUpcomingService] Service call '
           + `${GET_MOVIE_UPCOMING_SERVICE_PATH} KO`, error);
       yield put({
         type: MOVIE_UPCOMING_REQUEST_FAILURE,
@@ -53,7 +52,7 @@ export default function* getMovieUpcoming(action) {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[MovieUpcomingService] Service call '
+    console.log('[MovieUpcomingService] Service call '
           + `${GET_MOVIE_UPCOMING_SERVICE_PATH} KO`, error);
     yield put({
       type: MOVIE_UPCOMING_REQUEST_FAILURE,

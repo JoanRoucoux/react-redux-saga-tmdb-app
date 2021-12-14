@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
 import {
   Box,
   Button,
@@ -14,15 +15,11 @@ import {
   Favorite as FavoriteIcon,
   Person as PersonIcon,
 } from '@mui/icons-material';
-import { SessionUtils } from '../..';
 import LogoutButton from './LogoutButton';
 
-const {
-  retrieveSessionId,
-} = SessionUtils;
-
 const ProfileMenu = () => {
-  const isLoggedIn = retrieveSessionId();
+  const [cookies] = useCookies();
+  const { sessionId: isLoggedIn } = cookies;
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);

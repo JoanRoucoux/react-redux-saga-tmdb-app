@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { TvActionTypes } from '../redux';
 import TvServicesConstants from './TvServicesConstants';
@@ -34,7 +33,7 @@ export default function* getTvAiringToday(action) {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[TvAiringTodayService] Service call '
+      console.log('[TvAiringTodayService] Service call '
           + `${GET_TV_AIRING_TODAY_SERVICE_PATH} KO`, error);
       yield put({
         type: TV_AIRING_TODAY_REQUEST_FAILURE,
@@ -53,7 +52,7 @@ export default function* getTvAiringToday(action) {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[TvAiringTodayService] Service call '
+    console.log('[TvAiringTodayService] Service call '
           + `${GET_TV_AIRING_TODAY_SERVICE_PATH} KO`, error);
     yield put({
       type: TV_AIRING_TODAY_REQUEST_FAILURE,

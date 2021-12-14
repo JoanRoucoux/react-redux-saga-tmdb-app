@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { TvActionTypes } from '../redux';
 import TvServicesConstants from './TvServicesConstants';
@@ -33,7 +32,7 @@ export default function* getTvDetails(action) {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[TvDetailsService] Service call '
+      console.log('[TvDetailsService] Service call '
           + `${GET_PERSON_DETAILS_SERVICE_PATH} KO`, error);
       yield put({
         type: TV_DETAILS_REQUEST_FAILURE,
@@ -52,7 +51,7 @@ export default function* getTvDetails(action) {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[TvDetailsService] Service call '
+    console.log('[TvDetailsService] Service call '
           + `${GET_PERSON_DETAILS_SERVICE_PATH} KO`, error);
     yield put({
       type: TV_DETAILS_REQUEST_FAILURE,

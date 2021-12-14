@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { MovieActionTypes } from '../redux';
 import MovieServicesConstants from './MovieServicesConstants';
@@ -34,7 +33,7 @@ export default function* getMovieNowPlaying(action) {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[MovieNowPlayingService] Service call '
+      console.log('[MovieNowPlayingService] Service call '
           + `${GET_MOVIE_NOW_PLAYING_SERVICE_PATH} KO`, error);
       yield put({
         type: MOVIE_NOW_PLAYING_REQUEST_FAILURE,
@@ -53,7 +52,7 @@ export default function* getMovieNowPlaying(action) {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[MovieNowPlayingService] Service call '
+    console.log('[MovieNowPlayingService] Service call '
           + `${GET_MOVIE_NOW_PLAYING_SERVICE_PATH} KO`, error);
     yield put({
       type: MOVIE_NOW_PLAYING_REQUEST_FAILURE,

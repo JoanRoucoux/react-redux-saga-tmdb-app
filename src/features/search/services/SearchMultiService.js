@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { SearchActionTypes } from '../redux';
 import SearchServicesConstants from './SearchServicesConstants';
@@ -35,7 +34,7 @@ export default function* getSearchMulti(action) {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[SearchMultiService] Service call '
+      console.log('[SearchMultiService] Service call '
           + `${GET_SEARCH_MULTI_SERVICE_PATH} KO`, error);
       yield put({
         type: SEARCH_MULTI_REQUEST_FAILURE,
@@ -54,7 +53,7 @@ export default function* getSearchMulti(action) {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[SearchMultiService] Service call '
+    console.log('[SearchMultiService] Service call '
           + `${GET_SEARCH_MULTI_SERVICE_PATH} KO`, error);
     yield put({
       type: SEARCH_MULTI_REQUEST_FAILURE,

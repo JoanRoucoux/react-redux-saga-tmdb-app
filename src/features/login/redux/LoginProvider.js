@@ -6,7 +6,6 @@ const LoginNewTokenFragment = (state) => ({
 
 const LoginNewSessionFragment = (state) => ({
   sessionId: state?.LoginNewSession?.sessionId,
-  isLoggedIn: state?.LoginNewSession?.isLoggedIn,
   loginNewSessionLoading: state?.LoginNewSession?.loading,
   loginNewSessionError: state?.LoginNewSession?.error,
 });

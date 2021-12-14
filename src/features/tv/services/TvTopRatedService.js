@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { TvActionTypes } from '../redux';
 import TvServicesConstants from './TvServicesConstants';
@@ -34,7 +33,7 @@ export default function* getTvTopRated(action) {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[TvTopRatedService] Service call '
+      console.log('[TvTopRatedService] Service call '
           + `${GET_TV_TOP_RATED_SERVICE_PATH} KO`, error);
       yield put({
         type: TV_TOP_RATED_REQUEST_FAILURE,
@@ -53,7 +52,7 @@ export default function* getTvTopRated(action) {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[TvTopRatedService] Service call '
+    console.log('[TvTopRatedService] Service call '
           + `${GET_TV_TOP_RATED_SERVICE_PATH} KO`, error);
     yield put({
       type: TV_TOP_RATED_REQUEST_FAILURE,

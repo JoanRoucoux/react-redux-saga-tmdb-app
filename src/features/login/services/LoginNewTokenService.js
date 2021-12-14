@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { LoginActionTypes } from '../redux';
 import LoginServicesConstants from './LoginServicesConstants';
@@ -35,7 +34,7 @@ export default function* getLoginNewToken() {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[LoginNewTokenService] Service call '
+      console.log('[LoginNewTokenService] Service call '
           + `${GET_REQUEST_TOKEN_SERVICE_PATH} KO`, error);
       yield put({
         type: LOGIN_NEW_TOKEN_REQUEST_FAILURE,
@@ -54,7 +53,7 @@ export default function* getLoginNewToken() {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[LoginNewTokenService] Service call '
+    console.log('[LoginNewTokenService] Service call '
           + `${GET_REQUEST_TOKEN_SERVICE_PATH} KO`, error);
     yield put({
       type: LOGIN_NEW_TOKEN_REQUEST_FAILURE,

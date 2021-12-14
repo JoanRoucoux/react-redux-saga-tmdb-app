@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { AccountActionTypes } from '../redux';
 import AccountServicesConstants from './AccountServicesConstants';
@@ -35,7 +34,7 @@ export default function* getAccountDetails(action) {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[AccountDetailsService] Service call '
+      console.log('[AccountDetailsService] Service call '
           + `${GET_ACCOUNT_DETAILS_SERVICE_PATH} KO`, error);
       yield put({
         type: ACCOUNT_DETAILS_REQUEST_FAILURE,
@@ -54,7 +53,7 @@ export default function* getAccountDetails(action) {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[AccountDetailsService] Service call '
+    console.log('[AccountDetailsService] Service call '
           + `${GET_ACCOUNT_DETAILS_SERVICE_PATH} KO`, error);
     yield put({
       type: ACCOUNT_DETAILS_REQUEST_FAILURE,

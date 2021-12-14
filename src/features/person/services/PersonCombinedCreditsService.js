@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { PersonActionTypes } from '../redux';
 import PersonServicesConstants from './PersonServicesConstants';
@@ -35,7 +34,7 @@ export default function* getPersonCombinedCredits(action) {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[PersonCombinedCreditsService] Service call '
+      console.log('[PersonCombinedCreditsService] Service call '
           + `${GET_PERSON_DETAILS_SERVICE_PATH} KO`, error);
       yield put({
         type: PERSON_COMBINED_CREDITS_REQUEST_FAILURE,
@@ -54,7 +53,7 @@ export default function* getPersonCombinedCredits(action) {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[PersonCombinedCreditsService] Service call '
+    console.log('[PersonCombinedCreditsService] Service call '
           + `${GET_PERSON_DETAILS_SERVICE_PATH} KO`, error);
     yield put({
       type: PERSON_COMBINED_CREDITS_REQUEST_FAILURE,

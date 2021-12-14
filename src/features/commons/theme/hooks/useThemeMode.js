@@ -3,8 +3,14 @@ import {
   useDispatch,
   useSelector,
 } from 'react-redux';
+import LocalStorageUtils from '../../utils/LocalStorageUtils';
 import ThemeModes from '../constants/ThemeModes';
 import ThemeActionTypes from '../redux/ThemeActionTypes';
+
+const {
+  saveThemeMode,
+  retrieveThemeMode,
+} = LocalStorageUtils;
 
 const {
   DARK,
@@ -22,16 +28,16 @@ const useThemeMode = () => {
 
   const toggleThemeMode = () => {
     if (themeMode === LIGHT) {
-      window.localStorage.setItem('theme', DARK);
+      saveThemeMode(DARK);
       dispatch({ type: SET_DARK_THEME_MODE });
     } else {
-      window.localStorage.setItem('theme', LIGHT);
+      saveThemeMode(LIGHT);
       dispatch({ type: RESET_THEME_MODE });
     }
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem('theme');
+    const localTheme = retrieveThemeMode();
     if (localTheme && localTheme === DARK) {
       dispatch({ type: SET_DARK_THEME_MODE });
     }

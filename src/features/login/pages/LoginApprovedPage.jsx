@@ -9,8 +9,9 @@ import {
 } from '@mui/material';
 import { Reduxify } from '../../../core';
 import {
-  withTitle,
+  withCookies,
   withRouter,
+  withTitle,
 } from '../../commons';
 import {
   ApiError,
@@ -26,6 +27,7 @@ const {
   LoginNewSessionFragment,
 } = LoginProvider;
 
+@withCookies
 @withRouter
 @withTitle('Login Approved')
 @Reduxify((state) => ({
@@ -49,12 +51,15 @@ class LoginApprovedPage extends Component {
     this.initPage();
   }
 
-  componentDidUpdate(prevProps) {
-    this.handleLoginNewSession(prevProps);
+  componentDidUpdate(prevProps, prevState) {
+    const { timeLeft } = this.state;
+    if (prevState.timeLeft === timeLeft) {
+      this.handleLoginNewSession(prevProps);
+    }
   }
 
   componentWillUnmount() {
-    clearTimeout(this.timeoutHandle);
+    clearInterval(this.intervalHandle);
   }
 
   initPage = () => {
@@ -75,6 +80,7 @@ class LoginApprovedPage extends Component {
     } else if (this.isLoginNewSessionFail(prevProps)) {
       this.showError();
     } else if (this.isLoginNewSessionSuccess(prevProps)) {
+      this.saveSessionId();
       this.resetState();
       this.delayRedirection();
     }
@@ -129,6 +135,21 @@ class LoginApprovedPage extends Component {
     });
   };
 
+  saveSessionId = () => {
+    const {
+      setCookie,
+      sessionId,
+    } = this.props;
+    const oneHour = new Date(Date.now() + 3600000);
+    setCookie(
+      'sessionId',
+      sessionId, {
+        path: '/',
+        expires: oneHour,
+      },
+    );
+  };
+
   resetState = () => {
     this.setState({
       loginNewSessionLoading: false,
@@ -137,10 +158,8 @@ class LoginApprovedPage extends Component {
   };
 
   delayRedirection = () => {
-    const {
-      timeLeft,
-    } = this.state;
-    this.timeoutHandle = setTimeout(() => {
+    this.intervalHandle = setInterval(() => {
+      const { timeLeft } = this.state;
       if (timeLeft <= 0) {
         this.navigateToHomePage();
       } else {
@@ -158,7 +177,7 @@ class LoginApprovedPage extends Component {
 
   render() {
     const {
-      loginNewSession,
+      sessionId,
     } = this.props;
 
     const {
@@ -168,7 +187,7 @@ class LoginApprovedPage extends Component {
     } = this.state;
 
     console.log('[LoginPage] Display props:', {
-      loginNewSession,
+      sessionId,
     });
 
     console.log('[LoginPage] Display state:', {

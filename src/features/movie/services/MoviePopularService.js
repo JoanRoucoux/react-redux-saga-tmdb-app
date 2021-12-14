@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { MovieActionTypes } from '../redux';
 import MovieServicesConstants from './MovieServicesConstants';
@@ -35,7 +34,7 @@ export default function* getMoviePopular(action) {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[MoviePopularService] Service call '
+      console.log('[MoviePopularService] Service call '
           + `${GET_PERSON_POPULAR_SERVICE_PATH} KO`, error);
       yield put({
         type: MOVIE_POPULAR_REQUEST_FAILURE,
@@ -57,7 +56,7 @@ export default function* getMoviePopular(action) {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[MoviePopularService] Service call '
+    console.log('[MoviePopularService] Service call '
           + `${GET_PERSON_POPULAR_SERVICE_PATH} KO`, error);
     yield put({
       type: MOVIE_POPULAR_REQUEST_FAILURE,

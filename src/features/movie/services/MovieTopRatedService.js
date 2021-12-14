@@ -1,5 +1,4 @@
 import { call, put } from 'redux-saga/effects';
-import { AppLogger } from '../../../core';
 import MovieDbApiServicesFormatter from '../../commons/services-utils/MovieDbApiServicesFormatter';
 import { MovieActionTypes } from '../redux';
 import MovieServicesConstants from './MovieServicesConstants';
@@ -34,7 +33,7 @@ export default function* getMovieTopRated(action) {
     if (error) {
       // dispatch a failure action
       // to the store with the error
-      AppLogger.error('[MovieTopRatedService] Service call '
+      console.log('[MovieTopRatedService] Service call '
           + `${GET_MOVIE_TOP_RATED_SERVICE_PATH} KO`, error);
       yield put({
         type: MOVIE_TOP_RATED_REQUEST_FAILURE,
@@ -53,7 +52,7 @@ export default function* getMovieTopRated(action) {
   } catch (error) {
     // dispatch a failure action
     // to the store with the error
-    AppLogger.error('[MovieTopRatedService] Service call '
+    console.log('[MovieTopRatedService] Service call '
           + `${GET_MOVIE_TOP_RATED_SERVICE_PATH} KO`, error);
     yield put({
       type: MOVIE_TOP_RATED_REQUEST_FAILURE,

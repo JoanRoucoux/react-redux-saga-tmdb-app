@@ -10,7 +10,7 @@ const initialState = {
   error: null,
 };
 
-const LoginNewTokenReducer = (state = initialState, action) => Matcher()
+const AccountDetailsReducer = (state = initialState, action) => Matcher()
   .on(
     () => action.type === AccountActionTypes.ACCOUNT_DETAILS_REQUEST,
     () => ({
@@ -49,4 +49,4 @@ const LoginNewTokenReducer = (state = initialState, action) => Matcher()
   )
   .otherwise(() => state);
 
-export default LoginNewTokenReducer;
+export default AccountDetailsReducer;

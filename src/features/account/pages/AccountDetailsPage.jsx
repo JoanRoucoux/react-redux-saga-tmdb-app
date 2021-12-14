@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
-import { withTitle } from '../../commons';
+import { Reduxify } from '../../../core';
+import {
+  withCookies,
+  withTitle,
+} from '../../commons';
+import {
+  AccountDispatcher,
+  AccountProvider,
+} from '../redux';
 
+const {
+  AccountDetailsFragment,
+} = AccountProvider;
+
+@withCookies
 @withTitle('Account details')
+@Reduxify((state) => ({
+  // define state to extract
+  ...AccountDetailsFragment(state),
+}), {
+  // define actions to execute
+  ...AccountDispatcher,
+})
 class AccountDetailsPage extends Component {
   // initial state
   state = {};
@@ -11,7 +31,15 @@ class AccountDetailsPage extends Component {
     this.initPage();
   }
 
-  initPage = () => {};
+  initPage = () => {
+    const {
+      cookies,
+      requestAccountDetails,
+    } = this.props;
+    const { sessionId } = cookies;
+    console.log('sessionId in AccountDetailsPage', sessionId);
+    requestAccountDetails({ sessionId });
+  };
 
   render() {
     return (

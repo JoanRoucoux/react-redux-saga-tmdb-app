@@ -1,38 +1,41 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   useDispatch,
   useSelector,
 } from 'react-redux';
+import { useCookies } from 'react-cookie';
 import { LoadingButton } from '@mui/lab';
 import { LoginActionTypes } from '../../../login/redux';
+import { useDidUpdate } from '../..';
 
 const {
   LOGIN_DELETE_SESSION_REQUEST,
 } = LoginActionTypes;
 
-const ProfileMenu = () => {
+const LogoutButton = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
+  const [cookies, setCookie, removeCookie] = useCookies();
 
   const {
     loading,
     error,
   } = useSelector((state) => state?.LoginDeleteSession);
 
-  const handleLogout = () => dispatch({ type: LOGIN_DELETE_SESSION_REQUEST });
+  const { sessionId } = cookies;
+  const handleLogout = () => dispatch({
+    type: LOGIN_DELETE_SESSION_REQUEST,
+    payload: { sessionId },
+  });
 
-  useEffect(() => {
-    if (error) {
-      console.log('error on error');
+  useDidUpdate(() => {
+    if (error || loading) {
       return;
     }
-    if (loading) {
-      console.log('loading is loading');
-      return;
-    }
-    console.log('success');
-    navigate('app/home');
+    removeCookie('sessionId', { path: '/' });
+    navigate('/app/home');
   }, [
     loading,
     error,
@@ -50,4 +53,4 @@ const ProfileMenu = () => {
   );
 };
 
-export default ProfileMenu;
+export default LogoutButton;

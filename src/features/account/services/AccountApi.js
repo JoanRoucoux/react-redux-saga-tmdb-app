@@ -1,21 +1,21 @@
 import { axios } from '../../../core';
-import SessionUtils from '../../commons/utils/SessionUtils';
 import AccountServicesConstants from './AccountServicesConstants';
-
-const {
-  getAuthorizationHeader,
-} = SessionUtils;
 
 const {
   GET_ACCOUNT_DETAILS_SERVICE_PATH,
 } = AccountServicesConstants;
 
-const accountDetailsQuery = async () => {
+const accountDetailsQuery = async (params) => {
+  const {
+    sessionId,
+  } = params;
   const url = `${GET_ACCOUNT_DETAILS_SERVICE_PATH}`;
   return axios({
     method: 'get',
     url,
-    headers: getAuthorizationHeader,
+    params: {
+      session_id: sessionId,
+    },
   });
 };
 
