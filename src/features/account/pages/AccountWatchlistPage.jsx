@@ -40,7 +40,6 @@ class AccountWatchlistPage extends Component {
       requestAccountWatchlistTv,
     } = this.props;
     const { sessionId } = cookies;
-    console.log('sessionId in AccountWatchlistPage', sessionId);
     requestAccountWatchlistMovies({ sessionId });
     requestAccountWatchlistTv({ sessionId });
   };

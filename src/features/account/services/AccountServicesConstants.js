@@ -3,6 +3,8 @@ const getAccountFavoriteMoviesServicePath = (accountId) => `/account/${accountId
 const getAccountFavoriteTvServicePath = (accountId) => `/account/${accountId}/favorite/tv`;
 const getAccountWatchlistMoviesServicePath = (accountId) => `/account/${accountId}/watchlist/movies`;
 const getAccountWatchlistTvServicePath = (accountId) => `/account/${accountId}/watchlist/tv`;
+const postAccountFavoriteServicePath = (accountId) => `/account/${accountId}/favorite`;
+const postAccountWatchlistServicePath = (accountId) => `/account/${accountId}/watchlist`;
 
 const AccountServicesConstants = {
   GET_ACCOUNT_DETAILS_SERVICE_PATH,
@@ -10,6 +12,8 @@ const AccountServicesConstants = {
   getAccountFavoriteTvServicePath,
   getAccountWatchlistMoviesServicePath,
   getAccountWatchlistTvServicePath,
+  postAccountFavoriteServicePath,
+  postAccountWatchlistServicePath,
 };
 
 export default AccountServicesConstants;

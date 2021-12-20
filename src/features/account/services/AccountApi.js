@@ -7,6 +7,8 @@ const {
   getAccountFavoriteTvServicePath,
   getAccountWatchlistMoviesServicePath,
   getAccountWatchlistTvServicePath,
+  postAccountFavoriteServicePath,
+  postAccountWatchlistServicePath,
 } = AccountServicesConstants;
 
 const accountDetailsQuery = async (params) => {
@@ -83,12 +85,44 @@ const accountWatchlistTvQuery = async (params) => {
   });
 };
 
+const accountMarkFavoriteQuery = async (params) => {
+  const {
+    accountId,
+    sessionId,
+  } = params;
+  const url = postAccountFavoriteServicePath(accountId);
+  return axios({
+    method: 'post',
+    url,
+    params: {
+      session_id: sessionId,
+    },
+  });
+};
+
+const accountAddWatchlistQuery = async (params) => {
+  const {
+    accountId,
+    sessionId,
+  } = params;
+  const url = postAccountWatchlistServicePath(accountId);
+  return axios({
+    method: 'post',
+    url,
+    params: {
+      session_id: sessionId,
+    },
+  });
+};
+
 const AccountApi = {
   accountDetailsQuery,
   accountFavoriteMoviesQuery,
   accountFavoriteTvQuery,
   accountWatchlistMoviesQuery,
   accountWatchlistTvQuery,
+  accountMarkFavoriteQuery,
+  accountAddWatchlistQuery,
 };
 
 export default AccountApi;

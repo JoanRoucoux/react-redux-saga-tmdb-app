@@ -40,7 +40,6 @@ class AccountFavoritesPage extends Component {
       requestAccountFavoriteTv,
     } = this.props;
     const { sessionId } = cookies;
-    console.log('sessionId in AccountFavoritesPage', sessionId);
     requestAccountFavoriteMovies({ sessionId });
     requestAccountFavoriteTv({ sessionId });
   };

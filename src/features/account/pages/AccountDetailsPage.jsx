@@ -37,7 +37,6 @@ class AccountDetailsPage extends Component {
       requestAccountDetails,
     } = this.props;
     const { sessionId } = cookies;
-    console.log('sessionId in AccountDetailsPage', sessionId);
     requestAccountDetails({ sessionId });
   };
 

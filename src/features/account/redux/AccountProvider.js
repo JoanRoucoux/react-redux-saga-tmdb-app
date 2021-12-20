@@ -43,12 +43,32 @@ const AccountWatchlistTvFragment = (state) => ({
   personPopularError: state?.PersonPopular?.error,
 });
 
+const AccountMarkFavoriteFragment = (state) => ({
+  personPopularResults: state?.PersonPopular?.personPopularResults,
+  personPopularCurrentPage: state?.PersonPopular?.personPopularCurrentPage,
+  personPopularTotalPages: state?.PersonPopular?.personPopularTotalPages,
+  personPopularTotalResults: state?.PersonPopular?.personPopularTotalResults,
+  personPopularLoading: state?.PersonPopular?.loading,
+  personPopularError: state?.PersonPopular?.error,
+});
+
+const AccountAddWatchlistFragment = (state) => ({
+  personPopularResults: state?.PersonPopular?.personPopularResults,
+  personPopularCurrentPage: state?.PersonPopular?.personPopularCurrentPage,
+  personPopularTotalPages: state?.PersonPopular?.personPopularTotalPages,
+  personPopularTotalResults: state?.PersonPopular?.personPopularTotalResults,
+  personPopularLoading: state?.PersonPopular?.loading,
+  personPopularError: state?.PersonPopular?.error,
+});
+
 const AccountProvider = {
   AccountDetailsFragment,
   AccountFavoriteMoviesFragment,
   AccountFavoriteTvFragment,
   AccountWatchlistMoviesFragment,
   AccountWatchlistTvFragment,
+  AccountMarkFavoriteFragment,
+  AccountAddWatchlistFragment,
 };
 
 export default AccountProvider;

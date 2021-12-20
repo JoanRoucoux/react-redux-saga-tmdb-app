@@ -2,10 +2,7 @@ import { Matcher } from '../../../core';
 import AccountActionTypes from './AccountActionTypes';
 
 const initialState = {
-  personPopularResults: null,
-  personPopularCurrentPage: null,
-  personPopularTotalPages: null,
-  personPopularTotalResults: null,
+  accountDetails: null,
   loading: false,
   error: null,
 };
@@ -15,10 +12,7 @@ const AccountDetailsReducer = (state = initialState, action) => Matcher()
     () => action.type === AccountActionTypes.ACCOUNT_DETAILS_REQUEST,
     () => ({
       ...state,
-      personPopularResults: null,
-      personPopularCurrentPage: null,
-      personPopularTotalPages: null,
-      personPopularTotalResults: null,
+      accountDetails: null,
       loading: true,
       error: null,
     }),
@@ -27,10 +21,7 @@ const AccountDetailsReducer = (state = initialState, action) => Matcher()
     () => action.type === AccountActionTypes.ACCOUNT_DETAILS_REQUEST_SUCCESS,
     () => ({
       ...state,
-      personPopularResults: action.personPopularResults,
-      personPopularCurrentPage: action.personPopularCurrentPage,
-      personPopularTotalPages: action.personPopularTotalPages,
-      personPopularTotalResults: action.personPopularTotalResults,
+      accountDetails: action.accountDetails,
       loading: false,
       error: null,
     }),
@@ -39,10 +30,7 @@ const AccountDetailsReducer = (state = initialState, action) => Matcher()
     () => action.type === AccountActionTypes.ACCOUNT_DETAILS_REQUEST_FAILURE,
     () => ({
       ...state,
-      personPopularResults: null,
-      personPopularCurrentPage: null,
-      personPopularTotalPages: null,
-      personPopularTotalResults: null,
+      accountDetails: null,
       loading: false,
       error: action.error,
     }),

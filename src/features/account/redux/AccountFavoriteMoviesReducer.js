@@ -10,9 +10,9 @@ const initialState = {
   error: null,
 };
 
-const AccountDetailsReducer = (state = initialState, action) => Matcher()
+const AccountFavoriteMoviesReducer = (state = initialState, action) => Matcher()
   .on(
-    () => action.type === AccountActionTypes.ACCOUNT_DETAILS_REQUEST,
+    () => action.type === AccountActionTypes.ACCOUNT_FAVORITE_MOVIES_REQUEST,
     () => ({
       ...state,
       personPopularResults: null,
@@ -24,7 +24,7 @@ const AccountDetailsReducer = (state = initialState, action) => Matcher()
     }),
   )
   .on(
-    () => action.type === AccountActionTypes.ACCOUNT_DETAILS_REQUEST_SUCCESS,
+    () => action.type === AccountActionTypes.ACCOUNT_FAVORITE_MOVIES_REQUEST_SUCCESS,
     () => ({
       ...state,
       personPopularResults: action.personPopularResults,
@@ -36,7 +36,7 @@ const AccountDetailsReducer = (state = initialState, action) => Matcher()
     }),
   )
   .on(
-    () => action.type === AccountActionTypes.ACCOUNT_DETAILS_REQUEST_FAILURE,
+    () => action.type === AccountActionTypes.ACCOUNT_FAVORITE_MOVIES_REQUEST_FAILURE,
     () => ({
       ...state,
       personPopularResults: null,
@@ -49,4 +49,4 @@ const AccountDetailsReducer = (state = initialState, action) => Matcher()
   )
   .otherwise(() => state);
 
-export default AccountDetailsReducer;
+export default AccountFavoriteMoviesReducer;
