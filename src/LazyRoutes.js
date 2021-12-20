@@ -2,6 +2,7 @@ import { lazy } from 'react';
 
 const AccountDetailsPage = lazy(() => import('./features/account/pages/AccountDetailsPage'));
 const AccountFavoritesPage = lazy(() => import('./features/account/pages/AccountFavoritesPage'));
+const AccountWatchlistPage = lazy(() => import('./features/account/pages/AccountWatchlistPage'));
 const AboutPage = lazy(() => import('./features/about/pages/AboutPage'));
 const HomePage = lazy(() => import('./features/home/pages/HomePage'));
 const LoginPage = lazy(() => import('./features/login/pages/LoginPage'));
@@ -24,6 +25,7 @@ const TvTopRatedPage = lazy(() => import('./features/tv/pages/TvTopRatedPage'));
 const LazyRoutes = {
   AccountDetailsPage,
   AccountFavoritesPage,
+  AccountWatchlistPage,
   AboutPage,
   HomePage,
   MovieDetailsPage,

@@ -9,6 +9,7 @@ import LazyRoutes from './LazyRoutes';
 const {
   AccountDetailsPage,
   AccountFavoritesPage,
+  AccountWatchlistPage,
   AboutPage,
   HomePage,
   LoginPage,
@@ -42,6 +43,7 @@ const routes = (isLoggedIn) => [
         children: [
           { path: 'details', element: <AccountDetailsPage /> },
           { path: 'favorites', element: <AccountFavoritesPage /> },
+          { path: 'watchlist', element: <AccountWatchlistPage /> },
           { path: '/', element: <Navigate to="details" /> },
           { path: '*', element: <Navigate to="/app/404" /> },
         ],

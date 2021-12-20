@@ -10,21 +10,21 @@ import {
 } from '../redux';
 
 const {
-  AccountFavoriteMoviesFragment,
-  AccountFavoriteTvFragment,
+  AccountWatchlistMoviesFragment,
+  AccountWatchlistTvFragment,
 } = AccountProvider;
 
 @withCookies
-@withTitle('My Favorites')
+@withTitle('My Watchlist')
 @Reduxify((state) => ({
   // define state to extract
-  ...AccountFavoriteMoviesFragment(state),
-  ...AccountFavoriteTvFragment(state),
+  ...AccountWatchlistMoviesFragment(state),
+  ...AccountWatchlistTvFragment(state),
 }), {
   // define actions to execute
   ...AccountDispatcher,
 })
-class AccountFavoritesPage extends Component {
+class AccountWatchlistPage extends Component {
   // initial state
   state = {};
 
@@ -36,20 +36,20 @@ class AccountFavoritesPage extends Component {
   initPage = () => {
     const {
       cookies,
-      requestAccountFavoriteMovies,
-      requestAccountFavoriteTv,
+      requestAccountWatchlistMovies,
+      requestAccountWatchlistTv,
     } = this.props;
     const { sessionId } = cookies;
-    console.log('sessionId in AccountFavoritesPage', sessionId);
-    requestAccountFavoriteMovies({ sessionId });
-    requestAccountFavoriteTv({ sessionId });
+    console.log('sessionId in AccountWatchlistPage', sessionId);
+    requestAccountWatchlistMovies({ sessionId });
+    requestAccountWatchlistTv({ sessionId });
   };
 
   render() {
     return (
-      <p>Je suis AccountFavoritesPage</p>
+      <p>Je suis AccountWatchlistPage</p>
     );
   }
 }
 
-export default AccountFavoritesPage;
+export default AccountWatchlistPage;
