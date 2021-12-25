@@ -9,26 +9,23 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TranslateIcon from '@mui/icons-material/Translate';
-import i18n from '../../../../settings/i18n/i18n';
+import { i18n } from '../../../../core';
 
 const languages = [
   {
     iso6391code: 'en',
-    name: 'english',
+    name: 'English',
   },
   {
     iso6391code: 'fr',
-    name: 'french',
-  },
-  {
-    iso6391code: 'es',
-    name: 'spanish',
+    name: 'Français',
   },
 ];
 
 const LanguageSwitcher = () => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const initialIndex = languages.findIndex((language) => language.iso6391code === i18n.language);
+  const [selectedIndex, setSelectedIndex] = React.useState(initialIndex);
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -49,7 +46,7 @@ const LanguageSwitcher = () => {
 
   return (
     <Tooltip
-      title={t('Change language')}
+      title={t('tooltip.changeLanguage')}
       open={tooltipOpen}
     >
       <Box>

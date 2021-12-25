@@ -92,8 +92,7 @@ class MoviePopularPage extends Component {
         <Header title="Popular Movies" />
         {(moviePopularError && (
           <ApiError />
-        ))
-        || (
+        )) || (
           <>
             <MovieList
               loading={moviePopularLoading}

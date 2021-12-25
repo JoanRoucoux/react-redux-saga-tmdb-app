@@ -10,9 +10,9 @@ const GithubButton = () => {
   const { t } = useTranslation();
 
   return (
-    <Tooltip title={t('GitHub repository')}>
+    <Tooltip title={t('tooltip.gitHubRepository')}>
       <IconButton
-        aria-label={t('GitHub repository')}
+        aria-label={t('tooltip.gitHubRepository')}
         color="inherit"
         href="https://github.com/JoanRoucoux/react-redux-saga-tmdb-app"
         target="_blank"

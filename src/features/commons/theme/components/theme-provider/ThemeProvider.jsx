@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import createCustomTheme from '../../config/createCustomTheme';
-import Backdrop from '../backdrop/Backdrop';
 import GlobalStyles from '../global-styles/GlobalStyles';
 
 const ThemeProvider = ({ children }) => {
@@ -13,7 +12,7 @@ const ThemeProvider = ({ children }) => {
   return (
     <MUIThemeProvider theme={theme}>
       <GlobalStyles />
-      <Suspense fallback={<Backdrop />}>
+      <Suspense fallback={<div />}>
         {children}
       </Suspense>
     </MUIThemeProvider>

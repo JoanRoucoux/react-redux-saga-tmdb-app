@@ -23,9 +23,9 @@ const ThemeSwitcher = () => {
   const getThemeModeIcon = () => (themeMode === DARK ? <Brightness7Icon /> : <Brightness4Icon />);
 
   return (
-    <Tooltip title={t('Toggle light/dark theme')}>
+    <Tooltip title={t('tooltip.toggleTheme')}>
       <IconButton
-        aria-label={t('Toggle light/dark theme')}
+        aria-label={t('tooltip.toggleTheme')}
         color="inherit"
         onClick={toggleThemeMode}
       >

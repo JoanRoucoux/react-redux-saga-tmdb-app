@@ -1,0 +1,10 @@
+{
+    "button": {
+        "": ""
+    },
+    "tooltip": {
+        "changeLanguage": "Changer de langue",
+        "toggleTheme": "Basculer thème clair/foncé",
+        "gitHubRepository": "Dépôt GitHub"
+    }
+}
